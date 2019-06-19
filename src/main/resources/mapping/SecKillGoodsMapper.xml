@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blackface.seckill.dao.SecKillGoodsMapper" >
+  <resultMap id="BaseResultMap" type="com.blackface.seckill.domain.SecKillGoods" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="goods_id" property="goodsId" jdbcType="BIGINT" />
+    <result column="seckill_price" property="seckillPrice" jdbcType="DECIMAL" />
+    <result column="seckill_stock" property="seckillStock" jdbcType="INTEGER" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="SecKillGoodsRsMap" type="com.blackface.seckill.vo.SecKillGoodsVo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="sec_id" property="secId" jdbcType="BIGINT" />
+    <result column="seckill_stock" property="seckillStock" jdbcType="INTEGER" />
+    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR" />
+    <result column="goods_title" property="goodsTitle" jdbcType="VARCHAR" />
+    <result column="goods_img" property="goodsImg" jdbcType="VARCHAR" />
+    <result column="goods_price" property="goodsPrice" jdbcType="DECIMAL" />
+    <result column="goods_stock" property="goodsStock" jdbcType="INTEGER" />
+    <result column="seckill_price" property="seckillPrice" jdbcType="DECIMAL" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, goods_id, seckill_price, seckill_stock, start_date, end_date
+  </sql>
+  <select id="getSecKillGoodsList" resultMap="SecKillGoodsRsMap" parameterType="java.lang.Long" >
+    select
+     b.*, a.id as sec_id,a.seckill_stock,a.start_date ,a.end_date,a.seckill_price
+     from seckill_goods a
+     LEFT JOIN goods b
+     on  a.goods_id = b.id
+  </select>
+
+  <select id="getSecKillGoods" resultMap="SecKillGoodsRsMap" parameterType="java.lang.Long" >
+    select
+    b.*, a.id as sec_id,a.seckill_stock,a.start_date ,a.end_date,a.seckill_price
+    from seckill_goods a
+    LEFT JOIN goods b
+    on  a.goods_id = b.id where a.id  = #{id,jdbcType=BIGINT}
+  </select>
+
+  <update id="reduceStock"   parameterType="java.lang.Long" >
+    update
+    seckill_goods
+    set seckill_stock=seckill_stock-1
+    where id=#{id}
+  </update>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from seckill_goods
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from seckill_goods
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.blackface.seckill.domain.SecKillGoods" >
+    insert into seckill_goods (id, goods_id, seckill_price, 
+      seckill_stock, start_date, end_date
+      )
+    values (#{id,jdbcType=BIGINT}, #{goodsId,jdbcType=BIGINT}, #{seckillPrice,jdbcType=DECIMAL}, 
+      #{seckillStock,jdbcType=INTEGER}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.blackface.seckill.domain.SecKillGoods" >
+    insert into seckill_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="seckillPrice != null" >
+        seckill_price,
+      </if>
+      <if test="seckillStock != null" >
+        seckill_stock,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="seckillPrice != null" >
+        #{seckillPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="seckillStock != null" >
+        #{seckillStock,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackface.seckill.domain.SecKillGoods" >
+    update seckill_goods
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=BIGINT},
+      </if>
+      <if test="seckillPrice != null" >
+        seckill_price = #{seckillPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="seckillStock != null" >
+        seckill_stock = #{seckillStock,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.blackface.seckill.domain.SecKillGoods" >
+    update seckill_goods
+    set goods_id = #{goodsId,jdbcType=BIGINT},
+      seckill_price = #{seckillPrice,jdbcType=DECIMAL},
+      seckill_stock = #{seckillStock,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=TIMESTAMP},
+      end_date = #{endDate,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

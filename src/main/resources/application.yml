@@ -1,0 +1,70 @@
+server:
+  servlet:
+    context-path: /seckill
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: 'Qwer.1322806298.'
+    url: jdbc:mysql://47.99.77.244:3306/seckill?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 初始化大小，最小，最大
+    initial-size: 5
+    min-idle: 5
+    max-active: 20
+    # 配置获取连接等待超时的时间
+    max-wait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    time-between-eviction-runs-millis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    min-evictable-idle-time-millis: 300000
+    validation-query: SELECT 1 FROM DUAL
+    test-while-idle: true
+    test-on-borrow: false
+    test-on-return: false
+    #打开PSCache，并且指定每个连接上PSCache的大小
+    pool-prepared-statements: true
+    #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    max-pool-prepared-statement-per-connection-size: 20
+    filters: stat,wall
+    use-global-data-source-stat: true
+    #通过connectProperties属性来打开mergeSql功能；慢SQL记录
+    connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+  jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: update
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+mybatis:
+  mapper-locations: classpath:mapping/*.xml     #mapper文件路径
+  type-aliases-package: com.blackface.seckill.dao   #实体类的包路径
+  configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#pagehelper分页插件
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+    returnPageInfo: check
+
+#redis配置
+redis:
+  host: 47.99.77.244
+  port: 6379
+  timeout: 3
+  password: zxcv132280.
+  poolMaxTotal: 20
+  poolMaxIdle: 10
+  poolMaxWait: 3
+
+#MD5固定盐
+MD5:
+  salt: 1a2b3c4d
+
+
