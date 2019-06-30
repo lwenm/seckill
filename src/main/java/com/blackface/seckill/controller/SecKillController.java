@@ -1,7 +1,6 @@
 package com.blackface.seckill.controller;
 
 import com.blackface.seckill.domain.OrderInfo;
-import com.blackface.seckill.domain.SecKillOrder;
 import com.blackface.seckill.domain.SecUser;
 import com.blackface.seckill.result.CodeMsg;
 import com.blackface.seckill.service.impl.GoodsServiceImpl;
