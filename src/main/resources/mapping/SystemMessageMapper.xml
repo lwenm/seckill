@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.blackface.seckill.dao.SystemMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.blackface.seckill.domain.SystemMessage" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="message_info_id" property="messageInfoId" jdbcType="BIGINT" />
+    <result column="sender_id" property="senderId" jdbcType="BIGINT" />
+    <result column="sender_nick" property="senderNick" jdbcType="VARCHAR" />
+    <result column="msg_type" property="msgType" jdbcType="VARCHAR" />
+    <result column="send_type" property="sendType" jdbcType="VARCHAR" />
+    <result column="suc_num" property="sucNum" jdbcType="BIGINT" />
+    <result column="expire_flag" property="expireFlag" jdbcType="VARCHAR" />
+    <result column="expire_time" property="expireTime" jdbcType="TIMESTAMP" />
+    <result column="push_time" property="pushTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, message_info_id, sender_id, sender_nick, msg_type, send_type, suc_num, expire_flag, 
+    expire_time, push_time, create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_message
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from system_message
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.blackface.seckill.domain.SystemMessage" >
+    insert into system_message (id, message_info_id, sender_id, 
+      sender_nick, msg_type, send_type, 
+      suc_num, expire_flag, expire_time, 
+      push_time, create_time)
+    values (#{id,jdbcType=BIGINT}, #{messageInfoId,jdbcType=BIGINT}, #{senderId,jdbcType=BIGINT}, 
+      #{senderNick,jdbcType=VARCHAR}, #{msgType,jdbcType=VARCHAR}, #{sendType,jdbcType=VARCHAR}, 
+      #{sucNum,jdbcType=BIGINT}, #{expireFlag,jdbcType=VARCHAR}, #{expireTime,jdbcType=TIMESTAMP}, 
+      #{pushTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.blackface.seckill.domain.SystemMessage" >
+    insert into system_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="messageInfoId != null" >
+        message_info_id,
+      </if>
+      <if test="senderId != null" >
+        sender_id,
+      </if>
+      <if test="senderNick != null" >
+        sender_nick,
+      </if>
+      <if test="msgType != null" >
+        msg_type,
+      </if>
+      <if test="sendType != null" >
+        send_type,
+      </if>
+      <if test="sucNum != null" >
+        suc_num,
+      </if>
+      <if test="expireFlag != null" >
+        expire_flag,
+      </if>
+      <if test="expireTime != null" >
+        expire_time,
+      </if>
+      <if test="pushTime != null" >
+        push_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="messageInfoId != null" >
+        #{messageInfoId,jdbcType=BIGINT},
+      </if>
+      <if test="senderId != null" >
+        #{senderId,jdbcType=BIGINT},
+      </if>
+      <if test="senderNick != null" >
+        #{senderNick,jdbcType=VARCHAR},
+      </if>
+      <if test="msgType != null" >
+        #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="sendType != null" >
+        #{sendType,jdbcType=VARCHAR},
+      </if>
+      <if test="sucNum != null" >
+        #{sucNum,jdbcType=BIGINT},
+      </if>
+      <if test="expireFlag != null" >
+        #{expireFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="expireTime != null" >
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushTime != null" >
+        #{pushTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.blackface.seckill.domain.SystemMessage" >
+    update system_message
+    <set >
+      <if test="messageInfoId != null" >
+        message_info_id = #{messageInfoId,jdbcType=BIGINT},
+      </if>
+      <if test="senderId != null" >
+        sender_id = #{senderId,jdbcType=BIGINT},
+      </if>
+      <if test="senderNick != null" >
+        sender_nick = #{senderNick,jdbcType=VARCHAR},
+      </if>
+      <if test="msgType != null" >
+        msg_type = #{msgType,jdbcType=VARCHAR},
+      </if>
+      <if test="sendType != null" >
+        send_type = #{sendType,jdbcType=VARCHAR},
+      </if>
+      <if test="sucNum != null" >
+        suc_num = #{sucNum,jdbcType=BIGINT},
+      </if>
+      <if test="expireFlag != null" >
+        expire_flag = #{expireFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="expireTime != null" >
+        expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushTime != null" >
+        push_time = #{pushTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.blackface.seckill.domain.SystemMessage" >
+    update system_message
+    set message_info_id = #{messageInfoId,jdbcType=BIGINT},
+      sender_id = #{senderId,jdbcType=BIGINT},
+      sender_nick = #{senderNick,jdbcType=VARCHAR},
+      msg_type = #{msgType,jdbcType=VARCHAR},
+      send_type = #{sendType,jdbcType=VARCHAR},
+      suc_num = #{sucNum,jdbcType=BIGINT},
+      expire_flag = #{expireFlag,jdbcType=VARCHAR},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      push_time = #{pushTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
