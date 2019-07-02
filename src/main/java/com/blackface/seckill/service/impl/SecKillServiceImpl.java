@@ -1,8 +1,7 @@
 package com.blackface.seckill.service.impl;
 
-import com.blackface.seckill.domain.Goods;
-import com.blackface.seckill.domain.OrderInfo;
 import com.blackface.seckill.domain.SecUser;
+import com.blackface.seckill.domain.OrderInfo;
 import com.blackface.seckill.service.SecKillService;
 import com.blackface.seckill.vo.SecKillGoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;

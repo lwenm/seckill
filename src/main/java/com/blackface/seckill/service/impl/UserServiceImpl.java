@@ -1,6 +1,5 @@
 package com.blackface.seckill.service.impl;
 
-import com.blackface.seckill.dao.SecUserMapper;
 import com.blackface.seckill.domain.SecUser;
 import com.blackface.seckill.redis.RedisService;
 import com.blackface.seckill.redis.prefix.AccToken;
@@ -9,6 +8,7 @@ import com.blackface.seckill.service.UserService;
 import com.blackface.seckill.util.MD5Util;
 import com.blackface.seckill.util.UUIDUtil;
 import com.blackface.seckill.vo.LoginVo;
+import com.blackface.seckill.dao.SecUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;

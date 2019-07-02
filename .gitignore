@@ -1,3 +1,6 @@
+/src/main/resource/generator/
+/src/main/resource/application.yml
+/src/main/resource/generatorConfig.xml
 /target/
 /.mvn/
 !.mvn/wrapper/maven-wrapper.jar

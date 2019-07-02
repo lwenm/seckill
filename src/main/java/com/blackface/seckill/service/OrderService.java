@@ -19,7 +19,7 @@ public interface OrderService {
      * @param OrderId
      * @return
      */
-    OrderInfo getOrderInfoByUserIdAndGoodId(Long userId,Long OrderId);
+    OrderInfo getOrderInfoByUserIdAndGoodId(Long userId, Long OrderId);
 
     /**
      * 生成订单

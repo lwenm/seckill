@@ -3,8 +3,8 @@ package com.blackface.seckill.controller;
 import com.blackface.seckill.domain.SecUser;
 import com.blackface.seckill.result.CodeMsg;
 import com.blackface.seckill.result.Result;
-import com.blackface.seckill.service.impl.UserServiceImpl;
 import com.blackface.seckill.util.ValidatorUtil;
+import com.blackface.seckill.service.impl.UserServiceImpl;
 import com.blackface.seckill.vo.LoginVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +33,7 @@ public class UserController {
 
     @PostMapping("/do_login")
     @ResponseBody
-    public Result<Object> login(HttpServletResponse response,@Valid LoginVo loginVo){
+    public Result<Object> login(HttpServletResponse response, @Valid LoginVo loginVo){
 
         String password = loginVo.getPassword();
         String mobile = loginVo.getMobile();

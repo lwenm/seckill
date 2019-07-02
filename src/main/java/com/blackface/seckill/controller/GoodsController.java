@@ -1,10 +1,9 @@
 package com.blackface.seckill.controller;
 
-import com.blackface.seckill.domain.SecKillGoods;
 import com.blackface.seckill.domain.SecUser;
 import com.blackface.seckill.redis.RedisService;
-import com.blackface.seckill.service.impl.GoodsServiceImpl;
 import com.blackface.seckill.vo.SecKillGoodsVo;
+import com.blackface.seckill.service.impl.GoodsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

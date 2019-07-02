@@ -3,7 +3,6 @@ package com.blackface.seckill.vo;
 import com.blackface.seckill.domain.Goods;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
