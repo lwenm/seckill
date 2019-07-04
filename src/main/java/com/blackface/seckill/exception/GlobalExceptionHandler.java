@@ -22,7 +22,7 @@ import java.util.List;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
-    public Result<String>  exceptionhandler(HttpServletRequest request,Exception e){
+    public Result<String> exceptionhandler(HttpServletRequest request, Exception e){
 
         if(e instanceof BindException){
 

@@ -1,15 +1,14 @@
 package com.blackface.seckill.service.impl;
 
 import com.blackface.seckill.dao.OrderInfoMapper;
-import com.blackface.seckill.dao.SecKillOrderMapper;
 import com.blackface.seckill.domain.OrderInfo;
 import com.blackface.seckill.domain.SecKillOrder;
 import com.blackface.seckill.domain.SecUser;
 import com.blackface.seckill.service.OrderService;
 import com.blackface.seckill.vo.SecKillGoodsVo;
+import com.blackface.seckill.dao.SecKillOrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 

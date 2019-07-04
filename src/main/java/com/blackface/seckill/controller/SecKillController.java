@@ -2,11 +2,11 @@ package com.blackface.seckill.controller;
 
 import com.blackface.seckill.domain.OrderInfo;
 import com.blackface.seckill.domain.SecUser;
+import com.blackface.seckill.service.impl.SecKillServiceImpl;
+import com.blackface.seckill.vo.SecKillGoodsVo;
 import com.blackface.seckill.result.CodeMsg;
 import com.blackface.seckill.service.impl.GoodsServiceImpl;
 import com.blackface.seckill.service.impl.OrderServiceImpl;
-import com.blackface.seckill.service.impl.SecKillServiceImpl;
-import com.blackface.seckill.vo.SecKillGoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
