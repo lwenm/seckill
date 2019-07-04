@@ -63,7 +63,7 @@ public class UserUtil {
 //		System.out.println("insert to db");
 		//登录，生成token
 		String urlString = "http://localhost:8080/seckill/user/do_login";
-		File file = new File("D:/tokens.txt");
+		File file = new File("D:/tokens1.txt");
 		if(file.exists()) {
 			file.delete();
 		}
@@ -110,6 +110,6 @@ public class UserUtil {
 
 	@Test
 	public  void main()throws Exception {
-		createUser(5000);
+		createUser(1);
 	}
 }
