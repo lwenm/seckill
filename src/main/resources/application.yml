@@ -6,8 +6,8 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
-    password: 'Qwer.1322806298.'
-    url: jdbc:mysql://47.99.77.244:3306/seckill?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    password: ''
+    url: jdbc:mysql://XXXXXXXXXXX:3306/seckill?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     type: com.alibaba.druid.pool.DruidDataSource
     # 初始化大小，最小，最大
     initial-size: 5
@@ -55,10 +55,10 @@ pagehelper:
 
 #redis配置
 redis:
-  host: 47.99.77.244
+  host: XXXXXXXXXXXX
   port: 6379
   timeout: 5000
-  password: zxcv132280.
+  password: XXXXXXXXX
   poolMaxTotal: 3000
   poolMaxIdle: 100
   poolMaxWait: 500
